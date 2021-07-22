@@ -8,20 +8,27 @@ public class Cell : MonoBehaviour
 {
     [SerializeField] private Image cellContents;
     [SerializeField] private GameObject starParticles;
-    private int _currentNumber;
+    private ObjectInformation _currentInformation;
+    private CellClickHandler _cellClickHandler;
 
-    public void SetData(int currentNumber, Image currentImage)
+    public void SetData(ObjectInformation currentInformation, CellClickHandler cellClickHandler)
     {
-        _currentNumber = currentNumber;
-        cellContents = currentImage;
+        _cellClickHandler = cellClickHandler;
+        _currentInformation = currentInformation;
+        cellContents.sprite = currentInformation.image;
     }
 
-    public void WrongAnswerClick()
+    public void CellClick()
+    {
+        _cellClickHandler.CellClicked(_currentInformation, this);
+    }
+
+    public void WrongAnswerClicked()
     {
         EaseInBounceEffect(cellContents.transform, 1f);
     }
 
-    public void RightAnswerClick()
+    public void RightAnswerClicked()
     {
         BounceObjectEffect(cellContents.transform);
         Instantiate(starParticles, transform.position + new Vector3(0, 0, -1), starParticles.transform.rotation);
