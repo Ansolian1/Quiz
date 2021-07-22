@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Image cellContents;
+    [SerializeField] private GameObject starParticles;
     private int _currentNumber;
-    private Image _currentImage;
 
     public void SetData(int currentNumber, Image currentImage)
     {
         _currentNumber = currentNumber;
-        _currentImage = currentImage;
+        cellContents = currentImage;
     }
 
     public void WrongAnswerClick()
@@ -24,6 +24,7 @@ public class Cell : MonoBehaviour
     public void RightAnswerClick()
     {
         BounceObjectEffect(cellContents.transform);
+        Instantiate(starParticles, transform.position + new Vector3(0, 0, -1), starParticles.transform.rotation);
     }
 
     private void BounceObjectEffect(Transform transform)
