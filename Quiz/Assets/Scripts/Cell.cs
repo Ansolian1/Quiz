@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Image cellContents;
-    [HideInInspector] public int CurrentNumber;
-    [HideInInspector] public Image CurrentImage;
+    private int _currentNumber;
+    private Image _currentImage;
 
-    void Start()
+    public void SetData(int currentNumber, Image currentImage)
     {
+        _currentNumber = currentNumber;
+        _currentImage = currentImage;
     }
 
     public void WrongAnswerClick()
