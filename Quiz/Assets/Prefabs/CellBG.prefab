@@ -272,7 +272,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1229134619}
-          m_MethodName: RightAnswerClick
+          m_MethodName: CellClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
