@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class FadeImage : MonoBehaviour
+public class FadeImage : MonoBehaviour, IFade
 {
     private Image image;
     void Start()
@@ -16,11 +16,22 @@ public class FadeImage : MonoBehaviour
 
     public void FadeIn()
     {
+        gameObject.SetActive(true);
         image.DOFade(1, 2f);
     }
 
     public void FadeOut()
     {
-        image.DOFade(0, 2f);
+        StartCoroutine(DisableObject());
+    }
+
+    IEnumerator DisableObject()
+    {
+        Tween hideTween = image.DOFade(0, 2f);
+        while (hideTween.active)
+        {
+            yield return null;
+        }
+        gameObject.SetActive(false);
     }
 }

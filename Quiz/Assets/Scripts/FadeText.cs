@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class FadeText : MonoBehaviour
+public class FadeText : MonoBehaviour, IFade
 {
     private Text text;
 

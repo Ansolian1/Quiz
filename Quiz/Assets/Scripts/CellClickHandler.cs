@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LevelState))]
+[RequireComponent(typeof(GameState))]
 public class CellClickHandler : MonoBehaviour
 {
-    private LevelState levelState;
+    private GameState levelState;
 
     private void Awake()
     {
-        levelState = GetComponent<LevelState>();
+        levelState = GetComponent<GameState>();
     }
 
     public void CellClicked(ObjectInformation cellObjectInformation, Cell cell)
@@ -17,6 +17,7 @@ public class CellClickHandler : MonoBehaviour
         if (levelState.IsRightAnswer(cellObjectInformation))
         {
             cell.RightAnswerClicked();
+            levelState.NextStage();
         }
         else
         {

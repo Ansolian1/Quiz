@@ -34,7 +34,7 @@ public class Cell : MonoBehaviour
         Instantiate(starParticles, transform.position + new Vector3(0, 0, -1), starParticles.transform.rotation);
     }
 
-    private void BounceObjectEffect(Transform transform)
+    public void BounceObjectEffect(Transform transform)
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOScale(new Vector2(0f, 0f), 0));
